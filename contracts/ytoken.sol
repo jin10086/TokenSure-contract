@@ -29,7 +29,7 @@ interface IUniswapV2Pair {
 interface  ITOKEN{
 
     //返回底层金本位资产数量(USD)
-    function getunderlying(address,uint256) external view returns(uint256);
+    function getUnderling(address,uint256) external view returns(uint256);
     function ilp2usd(address,address,uint256) external returns (uint256); //ilp 2 usd
     function usd2ilp(address,address,uint256) external returns (uint256);// usd 2 ilp
  }
@@ -42,7 +42,7 @@ contract yfiicover is ITOKEN{
     using SafeMath for uint256;
 
     
-    function getunderlying(address _lp,uint256 _amount) override public view returns(uint256){
+    function getUnderling(address _lp,uint256 _amount) override public view returns(uint256){
         
         uint256 liquidity = YVault(_lp).getPricePerFullShare().mul(_amount).div(1e18); 
         address lptoken = YVault(_lp).token();

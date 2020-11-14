@@ -6,16 +6,16 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract bidSure is ERC721,ERC721Burnable,Ownable {
+contract BidSure is ERC721,ERC721Burnable,Ownable {
     
     struct BID{
         uint256 apy;
-        address margin; //保证金代币地址
+        // address margin; //保证金代币地址
         uint256 marginAmount; //保证金数量
         uint256 starttime;
         uint256 minimumPeriodOfGuarantee;//最少保期时间,秒为单位
     }
-    mapping (uint256 => BID) private bids;
+    mapping (uint256 => BID) private _bids;
     constructor() public ERC721("bidSure", "bSure") {
     }
     
@@ -24,7 +24,7 @@ contract bidSure is ERC721,ERC721Burnable,Ownable {
         _setSureinfo(newItemId,_info);
     }
     function update_marginAmount(uint256 tokenId,uint256 _marginAmount)public onlyOwner {
-        BID storage _bid = bids[tokenId];
+        BID storage _bid = _bids[tokenId];
         _bid.marginAmount = _marginAmount;
     }
 
@@ -34,11 +34,11 @@ contract bidSure is ERC721,ERC721Burnable,Ownable {
     }
     
     function _setSureinfo(uint256 tokenId,BID memory _info) internal{
-        bids[tokenId] = _info;
+        _bids[tokenId] = _info;
     }
 
-    function getbids(uint256 _id) public view returns(BID memory _bid,address _owner){
-        _bid = bids[_id];
+    function bids(uint256 _id) public view returns(BID memory _bid,address _owner){
+        _bid = _bids[_id];
         _owner = ownerOf(_id);
     }
 }
