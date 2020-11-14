@@ -22,7 +22,7 @@ strategy:0xC352e8893F79808526029535614417c0058d5912
 
 ### uni
 
-eth/usdc lp:0x1238773Aa48644747aCDBA224732e0C2ecAC09e7
+eth/usdc lp:0x1238773aa48644747acdba224732e0c2ecac09e7
 
 add liquidity: https://igaojin.me/uniswap-interface/#/add/ETH/0xd76bb6fdd24aA5f85ef614Ab3008190cB279953F
 
