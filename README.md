@@ -30,7 +30,11 @@ add liquidity: https://igaojin.me/uniswap-interface/#/add/ETH/0xd76bb6fdd24aA5f8
 ### kovan测试网网址
 uni kovan:https://igaojin.me/uniswap-interface/#/swap
 
+github:https://github.com/jin10086/uniswap-interface
+
 yfii kovan: https://igaojin.me/dora-kovan-dfi/
+
+github:https://github.com/jin10086/dora-kovan-dfi
 
 
 成交的时候721出来（两个）
