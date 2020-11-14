@@ -36,7 +36,7 @@ interface  ITOKEN{
 
 contract yfiicover is ITOKEN{
     
-    address public constant weth = address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    address public constant weth = address(0xd0A1E359811322d97991E03f863a0C30C2cF029C);
     address public constant usdc = address(0xd76bb6fdd24aA5f85ef614Ab3008190cB279953F);
 
     using SafeMath for uint256;
@@ -71,9 +71,9 @@ contract yfiicover is ITOKEN{
         require(_token == usdc,"!ilp2usd");//TODO:后面加个其他代币转到USDC的转换器.        
         uint256 beforeBalance = IERC20(_token).balanceOf(address(this));
         if (_token < weth){
-            YVault(_lp).withdrawToken1(_amount);
-        }else{
             YVault(_lp).withdrawToken0(_amount);
+        }else{
+            YVault(_lp).withdrawToken1(_amount);
         }
         uint256 afterBalance = IERC20(usdc).balanceOf(address(this));
         uint256 balance = afterBalance-beforeBalance;
@@ -88,10 +88,11 @@ contract yfiicover is ITOKEN{
         uint256 beforeBalance = IERC20(_lp).balanceOf(address(this));
         IERC20(_token).approve(_lp,_amount);
         if (_token < weth){
-            YVault(_lp).depositToken1(_amount);
-        }else{
             YVault(_lp).depositToken0(_amount);
+        }else{
+            YVault(_lp).depositToken1(_amount);
         }
+        require(1==2,"error");
         uint256 afterBalance = IERC20(_lp).balanceOf(address(this));
         uint256 balance = afterBalance-beforeBalance;
         IERC20(_lp).transfer(msg.sender,balance);
