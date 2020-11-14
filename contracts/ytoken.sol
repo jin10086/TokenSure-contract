@@ -68,7 +68,7 @@ contract yfiicover is ITOKEN{
     
     function ilp2usd(address _token,address _lp,uint256 _amount) override external returns (uint256){
         
-        require(_token == usdc,"!");//TODO:后面加个其他代币转到USDC的转换器.        
+        require(_token == usdc,"!ilp2usd");//TODO:后面加个其他代币转到USDC的转换器.        
         uint256 beforeBalance = IERC20(_token).balanceOf(address(this));
         if (_token < weth){
             YVault(_lp).withdrawToken1(_amount);
@@ -83,7 +83,7 @@ contract yfiicover is ITOKEN{
     }
     
     function usd2ilp(address _token,address _lp,uint256 _amount) override external returns (uint256){
-        require(_token == usdc,"!");//TODO:后面加个其他代币转到USDC的转换器.        
+        require(_token == usdc,"!usd2ilp");//TODO:后面加个其他代币转到USDC的转换器.        
 
         uint256 beforeBalance = IERC20(_lp).balanceOf(address(this));
         IERC20(_token).approve(_lp,_amount);
