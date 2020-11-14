@@ -56,7 +56,7 @@ contract StrategyUniswap_ETH_USDC_LP {
     using Address for address;
     using SafeMath for uint256;
     
-    address constant public want = address(0x248CD5f844A013F7Fca9F3E13c81aE8eD23fC973); // LP
+    address constant public want = address(0x1238773Aa48644747aCDBA224732e0C2ecAC09e7); // LP
     address constant public unirouter = address(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     address constant public yfii = address(0xa1d0E215a23d7030842FC67cE582a6aFa3CCaB83);
     address constant public output = address(0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984); // UNI   

@@ -10,19 +10,19 @@
 
 ### yfii contract
 
-controller: 0x80a3c5065d720e7E738cDa5b8ADeEEDe86b5c3f1
+controller: 0xA48D2cF7a7BD84079A1ad7762c0221e382093e32
 
 unihelp:0x569DFeBB36cB9506FEf99F6aFc569FD8b0E4b258
 
 usdc:0xd76bb6fdd24aA5f85ef614Ab3008190cB279953F
 
-vault:yfii eth/usdc lp :0x499164394eDda8CF59dE497BA3788842A2e0A8c1
+vault:yfii eth/usdc lp : 0xAa49CA3Cec1830dAbF8f2b746002a52E16e18112
 
-strategy:0x4c130dc460fA303F30aB0a280C05c567B14BD9C1
+strategy:0xC352e8893F79808526029535614417c0058d5912
 
 ### uni
 
-eth/usdc lp:0x1238773aa48644747acdba224732e0c2ecac09e7
+eth/usdc lp:0x1238773Aa48644747aCDBA224732e0C2ecAC09e7
 
 add liquidity: https://igaojin.me/uniswap-interface/#/add/ETH/0xd76bb6fdd24aA5f85ef614Ab3008190cB279953F
 

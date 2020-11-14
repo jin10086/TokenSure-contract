@@ -318,7 +318,7 @@ contract iLPVault is ERC20, ERC20Detailed {
     
     IERC20 public token;
     
-    address constant public unihelper = address(0x46041Bf02edd6b0CF93bD0db42370CBF4DA67D0b);  
+    address constant public unihelper = address(0xAC35a979AAE0aa54d7F1b805Ee7ce1A267e0DCe8);  
     address constant public unirouter = address(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     address constant public weth = address(0xd0A1E359811322d97991E03f863a0C30C2cF029C);
 
