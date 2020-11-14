@@ -133,11 +133,11 @@ contract Sure {
         askOrder.amount -= assetAmount;
 
         uint256 minLiquidationAmount = assetAmount.mul(PRECISION).mul(liquidationLine + PRECISION).div(PRECISION);
-        require(minLiquidationAmount >= currentMargin.mul(PRECISION).add(assetAmount.mul(PRECISION)));
+        require(minLiquidationAmount >= currentMargin.mul(PRECISION).add(assetAmount.mul(PRECISION)), 'must be gte min liquidation');
         usdc.transferFrom(msg.sender, address(this), marginAmount);
 
         IStrategy strategy = strategies[address(askOrder.lp)];
-        require(strategy != IStrategy(address(0)));
+        require(strategy != IStrategy(address(0)), 'empty strategy');
 
         uint256 beforeLpAmount = askOrder.lp.balanceOf(address(this));
         strategy.usd2ilp(usdc, askOrder.lp, assetAmount);
