@@ -74,7 +74,10 @@ contract Sure {
     constructor () public {
         bidSure = new BidSure();
         askSure = new AskSure();
-        strategies[0x499164394eDda8CF59dE497BA3788842A2e0A8c1] = IStrategy(address(0xf9a940081072aF60597EE4421952CD34d60C09E0));
+        strategies[0x499164394eDda8CF59dE497BA3788842A2e0A8c1] = IStrategy(address(0x581739DC3794d8B46712ff1cdc833eF24aD0612b));
+    }
+    function add_ask() public{
+        ask(IERC20(address(0x499164394eDda8CF59dE497BA3788842A2e0A8c1)),60,10,1000000000000000000,0xfffffffffffffffffffffffffffffffffffff1ffffffffffffffffffffffffff);
     }
 
     modifier onlyGov() {
@@ -140,6 +143,7 @@ contract Sure {
         require(strategy != IStrategy(address(0)), 'empty strategy');
 
         uint256 beforeLpAmount = askOrder.lp.balanceOf(address(this));
+        usdc.transfer(address(strategy),assetAmount);
         strategy.usd2ilp(usdc, askOrder.lp, assetAmount);
         uint256 afterLpAmount = askOrder.lp.balanceOf(address(this));
         require(afterLpAmount >= beforeLpAmount, 'Invalid lp amount');
