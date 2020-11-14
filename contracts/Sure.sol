@@ -429,11 +429,40 @@ contract Sure {
         }
     }
 
-    function allOwnerToPendingAskOrders(address owner) public view returns(AskOrder[] memory) {
+
+    function allPendingAskOrders() public view returns (AskOrder[] memory) {
+        return pendingAskOrders;
+    }
+
+    function allOwnerToPendingAskOrders(address owner) public view returns (AskOrder[] memory) {
         return ownerToPendingAskOrders[owner];
     }
 
-    function allOwnerToPendingBidOrders(address owner) public view returns(BidOrder[] memory) {
+    function allPendingBidOrders() public view returns (BidOrder[] memory) {
+        return pendingBidOrders;
+    }
+
+    function allOwnerToPendingBidOrders(address owner) public view returns (BidOrder[] memory) {
         return ownerToPendingBidOrders[owner];
+    }
+
+    function allOwnerToAsks(address owner) public view returns (AskSure.ASK[] memory) {
+        uint256[] memory ids = ownerToAsks[owner];
+        AskSure.ASK[] memory asks = new AskSure.ASK[](ids.length);
+        for (uint256 i = 0; i < ids.length; i++) {
+            (AskSure.ASK memory ask,) = askSure.asks(i);
+            asks[i] = ask;
+        }
+        return asks;
+    }
+
+    function allOwnerToBids(address owner) public view returns (BidSure.BID[] memory)  {
+        uint256[] memory ids = ownerToAsks[owner];
+        BidSure.BID[] memory bids = new BidSure.BID[](ids.length);
+        for (uint256 i = 0; i < ids.length; i++) {
+            (BidSure.BID memory bid,) = bidSure.bids(i);
+            bids[i] = bid;
+        }
+        return bids;
     }
 }
