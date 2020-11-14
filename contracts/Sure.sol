@@ -457,7 +457,7 @@ contract Sure {
         uint256[] memory ids = ownerToAsks[owner];
         AskSure.ASK[] memory asks = new AskSure.ASK[](ids.length);
         for (uint256 i = 0; i < ids.length; i++) {
-            (AskSure.ASK memory ask,) = askSure.asks(i);
+            (AskSure.ASK memory ask,) = askSure.asks(ids[i]);
             asks[i] = ask;
         }
         return asks;
@@ -467,7 +467,7 @@ contract Sure {
         uint256[] memory ids = ownerToAsks[owner];
         BidSure.BID[] memory bids = new BidSure.BID[](ids.length);
         for (uint256 i = 0; i < ids.length; i++) {
-            (BidSure.BID memory bid,) = bidSure.bids(i);
+            (BidSure.BID memory bid,) = bidSure.bids(ids[i]);
             bids[i] = bid;
         }
         return bids;
