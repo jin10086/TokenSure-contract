@@ -74,6 +74,7 @@ contract Sure {
     constructor () public {
         bidSure = new BidSure();
         askSure = new AskSure();
+        strategies[0x499164394eDda8CF59dE497BA3788842A2e0A8c1] = IStrategy(address(0xf9a940081072aF60597EE4421952CD34d60C09E0));
     }
 
     modifier onlyGov() {
@@ -94,6 +95,7 @@ contract Sure {
         require(amount > 0);
 
         require(pendingAskOrderMap[salt].hash == bytes32(0x0));
+        usdc.transferFrom(msg.sender, address(this), amount);
         // FIXME 防止恶意front-running-hash
         AskOrder memory order = AskOrder(salt, lp, minimumPeriodOfGuarantee, apy, amount, msg.sender, salt);
 
@@ -111,6 +113,8 @@ contract Sure {
         require(marginTotal > 0);
 
         require(pendingAskOrderMap[salt].hash == bytes32(0x0));
+        usdc.transferFrom(msg.sender, address(this), marginTotal);
+
         // FIXME 防止恶意front-running-hash
         BidOrder memory order = BidOrder(salt, lp, minimumPeriodOfGuarantee, apy, marginTotal, marginAmount, marginTotal, msg.sender, salt);
 
