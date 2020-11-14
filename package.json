@@ -7,6 +7,10 @@
     "chai": "^4.2.0",
     "ethereum-waffle": "^3.2.0",
     "ethers": "^5.0.19",
-    "hardhat": "^2.0.3"
+    "hardhat": "^2.0.3",
+    "sol-merger": "^3.1.0"
+  },
+  "scripts": {
+    "merge-contracts": "sol-merger \"./contracts/*.sol\" ./build"
   }
 }
