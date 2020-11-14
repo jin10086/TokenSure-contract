@@ -330,7 +330,7 @@ contract Sure {
     function removeAskItemInPendingAskOrders(AskOrder memory item) private {
         uint size = pendingAskOrders.length;
         uint lastIndex = size - 1;
-        for (uint256 i = 0; i < lastIndex; i++) {
+        for (uint256 i = 0; i < size; i++) {
             if (pendingAskOrders[i].hash == item.hash) {
                 if (i < lastIndex) {
                     pendingAskOrders[i] = pendingAskOrders[lastIndex];
@@ -348,7 +348,7 @@ contract Sure {
         uint size = pendingAskOrders.length;
         uint lastIndex = size - 1;
 
-        for (uint256 i = 0; i < lastIndex; i++) {
+        for (uint256 i = 0; i < size; i++) {
             if (pendingAskOrders[i].hash == item.hash) {
                 if (i < lastIndex) {
                     pendingAskOrders[i] = pendingAskOrders[lastIndex];
@@ -366,7 +366,7 @@ contract Sure {
         uint size = pendingBidOrders.length;
         uint lastIndex = size - 1;
 
-        for (uint256 i = 0; i < lastIndex; i++) {
+        for (uint256 i = 0; i < size; i++) {
             if (pendingBidOrders[i].hash == item.hash) {
                 if (i < lastIndex) {
                     pendingBidOrders[i] = pendingBidOrders[lastIndex];
@@ -384,7 +384,7 @@ contract Sure {
         uint size = pendingBidOrders.length;
         uint lastIndex = size - 1;
 
-        for (uint256 i = 0; i < lastIndex; i++) {
+        for (uint256 i = 0; i < size; i++) {
             if (pendingBidOrders[i].hash == item.hash) {
                 if (i < lastIndex) {
                     pendingBidOrders[i] = pendingBidOrders[lastIndex];
@@ -402,7 +402,7 @@ contract Sure {
 
         uint size = items.length;
         uint lastIndex = size - 1;
-        for (uint256 i = 0; i < lastIndex; i++) {
+        for (uint256 i = 0; i < size; i++) {
             if (items[i] == item) {
                 if (i < lastIndex) {
                     items[i] = items[lastIndex];
@@ -420,7 +420,7 @@ contract Sure {
 
         uint size = items.length;
         uint lastIndex = size - 1;
-        for (uint256 i = 0; i < lastIndex; i++) {
+        for (uint256 i = 0; i < size; i++) {
             if (items[i] == item) {
                 if (i < lastIndex) {
                     items[i] = items[lastIndex];
