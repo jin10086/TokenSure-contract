@@ -133,7 +133,7 @@ contract Sure {
         askOrder.amount -= assetAmount;
 
         uint256 minLiquidationAmount = assetAmount.mul(PRECISION).mul(liquidationLine + PRECISION).div(PRECISION);
-        require(minLiquidationAmount >= currentMargin.mul(PRECISION).add(assetAmount.mul(PRECISION)), 'must be gte min liquidation');
+        require(minLiquidationAmount < currentMargin.mul(PRECISION).add(assetAmount.mul(PRECISION)), 'must be gte min liquidation');
         usdc.transferFrom(msg.sender, address(this), marginAmount);
 
         IStrategy strategy = strategies[address(askOrder.lp)];
@@ -176,7 +176,7 @@ contract Sure {
         bidOrder.remainingMarginAmount -= currentMargin;
 
         uint256 minLiquidationAmount = assetAmount.mul(PRECISION).mul(liquidationLine + PRECISION).div(PRECISION);
-        require(minLiquidationAmount >= currentMargin.mul(PRECISION).add(assetAmount.mul(PRECISION)));
+        require(minLiquidationAmount < currentMargin.mul(PRECISION).add(assetAmount.mul(PRECISION)));
         usdc.transferFrom(msg.sender, address(this), amount);
 
         IStrategy strategy = strategies[address(bidOrder.lp)];
@@ -427,5 +427,13 @@ contract Sure {
                 }
             }
         }
+    }
+
+    function allOwnerToPendingAskOrders(address owner) public view returns(AskOrder[] memory) {
+        return ownerToPendingAskOrders[owner];
+    }
+
+    function allOwnerToPendingBidOrders(address owner) public view returns(BidOrder[] memory) {
+        return ownerToPendingBidOrders[owner];
     }
 }
