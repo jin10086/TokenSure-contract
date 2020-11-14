@@ -142,7 +142,7 @@ contract Sure {
         uint256 beforeLpAmount = askOrder.lp.balanceOf(address(this));
         strategy.usd2ilp(usdc, askOrder.lp, assetAmount);
         uint256 afterLpAmount = askOrder.lp.balanceOf(address(this));
-        require(afterLpAmount >= beforeLpAmount);
+        require(afterLpAmount >= beforeLpAmount, 'Invalid lp amount');
 
         AskSure.ASK memory ask = AskSure.ASK(afterLpAmount - beforeLpAmount, askOrder.apy, address(askOrder.lp), amount, block.timestamp, askOrder.minimumPeriodOfGuarantee);
         BidSure.BID memory bid = BidSure.BID(askOrder.apy, currentMargin, block.timestamp, askOrder.minimumPeriodOfGuarantee);
