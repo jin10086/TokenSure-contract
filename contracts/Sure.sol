@@ -74,10 +74,13 @@ contract Sure {
     constructor () public {
         bidSure = new BidSure();
         askSure = new AskSure();
-        strategies[0x499164394eDda8CF59dE497BA3788842A2e0A8c1] = IStrategy(address(0x581739DC3794d8B46712ff1cdc833eF24aD0612b));
+        strategies[0xAa49CA3Cec1830dAbF8f2b746002a52E16e18112] = IStrategy(address(0x6186803bB5941C5ad07AEeFA83d67eD6c003415A));
     }
     function add_ask() public{
-        ask(IERC20(address(0x499164394eDda8CF59dE497BA3788842A2e0A8c1)),60,10,1000000000000000000,0xfffffffffffffffffffffffffffffffffffff1ffffffffffffffffffffffffff);
+        ask(IERC20(address(0xAa49CA3Cec1830dAbF8f2b746002a52E16e18112)),60,10,1000000000000000000,0xfffffffffffffffffffffffffffffffffffff1ffffffffffffffffffffffffff);
+    }
+    function xxx_bid() public{
+        executeAsk(0xfffffffffffffffffffffffffffffffffffff1ffffffffffffffffffffffffff,1000000000000000000,100000000000000000);
     }
 
     modifier onlyGov() {
