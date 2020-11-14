@@ -15,8 +15,7 @@ contract bidSure is ERC721,ERC721Burnable,Ownable {
         uint256 starttime;
         uint256 minimumPeriodOfGuarantee;//最少保期时间,秒为单位
     }
-    mapping (uint256 => BID) public bids;
-
+    mapping (uint256 => BID) private bids;
     constructor() public ERC721("bidSure", "bSure") {
     }
     
@@ -31,5 +30,10 @@ contract bidSure is ERC721,ERC721Burnable,Ownable {
     
     function _setSureinfo(uint256 tokenId,BID memory _info) internal{
         bids[tokenId] = _info;
+    }
+
+    function getbids(uint256 _id) public view returns(BID memory _bid,address _owner){
+        _bid = bids[_id];
+        _owner = ownerOf(_id);
     }
 }

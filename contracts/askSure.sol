@@ -17,7 +17,7 @@ contract askSure is ERC721,ERC721Burnable,Ownable {
         uint256 starttime;
         uint256 minimumPeriodOfGuarantee;//最少保期时间,秒为单位
     }
-    mapping (uint256 => ASK) public asks;
+    mapping (uint256 => ASK) private asks;
 
     constructor() public ERC721("askSure", "aSure") {
     }
@@ -34,5 +34,10 @@ contract askSure is ERC721,ERC721Burnable,Ownable {
     
     function _setSureinfo(uint256 tokenId,ASK memory _info) internal{
         asks[tokenId] = _info;
+    }
+
+    function getask(uint256 _id) public view returns(ASK memory _ask,address _owner){
+        _ask = asks[_id];
+        _owner = ownerOf(_id);
     }
 }
