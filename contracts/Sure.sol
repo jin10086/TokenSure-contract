@@ -76,8 +76,8 @@ contract Sure {
         askSure = new AskSure();
         strategies[0x499164394eDda8CF59dE497BA3788842A2e0A8c1] = IStrategy(address(0x581739DC3794d8B46712ff1cdc833eF24aD0612b));
     }
-    function add_ask() public{
-        ask(IERC20(address(0x499164394eDda8CF59dE497BA3788842A2e0A8c1)),60,10,1000000000000000000,0xfffffffffffffffffffffffffffffffffffff1ffffffffffffffffffffffffff);
+    function add_ask() public {
+        ask(IERC20(address(0x499164394eDda8CF59dE497BA3788842A2e0A8c1)), 60, 10, 1000000000000000000, 0xfffffffffffffffffffffffffffffffffffff1ffffffffffffffffffffffffff);
     }
 
     modifier onlyGov() {
@@ -143,7 +143,7 @@ contract Sure {
         require(strategy != IStrategy(address(0)), 'empty strategy');
 
         uint256 beforeLpAmount = askOrder.lp.balanceOf(address(this));
-        usdc.transfer(address(strategy),assetAmount);
+        usdc.transfer(address(strategy), assetAmount);
         strategy.usd2ilp(usdc, askOrder.lp, assetAmount);
         uint256 afterLpAmount = askOrder.lp.balanceOf(address(this));
         require(afterLpAmount >= beforeLpAmount, 'Invalid lp amount');
@@ -330,14 +330,15 @@ contract Sure {
     function removeAskItemInPendingAskOrders(AskOrder memory item) private {
         uint size = pendingAskOrders.length;
         uint lastIndex = size - 1;
-        for (uint256 i = 0; i < size; i++) {
-            if (pendingAskOrders[i].hash == item.hash) {
-                if (i < lastIndex) {
-                    pendingAskOrders[i] = pendingAskOrders[lastIndex];
+        for (uint256 _i = size; _i > 0; _i--) {
+            uint256 index = _i - 1;
+            if (pendingAskOrders[index].hash == item.hash) {
+                if (index < lastIndex) {
+                    pendingAskOrders[index] = pendingAskOrders[lastIndex--];
                     pendingAskOrders.pop();
                 } else {
-                    // delete pendingAskOrders[i];
                     pendingAskOrders.pop();
+                    lastIndex--;
                 }
             }
         }
@@ -348,14 +349,15 @@ contract Sure {
         uint size = pendingAskOrders.length;
         uint lastIndex = size - 1;
 
-        for (uint256 i = 0; i < size; i++) {
-            if (pendingAskOrders[i].hash == item.hash) {
-                if (i < lastIndex) {
-                    pendingAskOrders[i] = pendingAskOrders[lastIndex];
+        for (uint256 _i = size; _i > 0; _i--) {
+            uint256 index = _i - 1;
+            if (pendingAskOrders[index].hash == item.hash) {
+                if (index < lastIndex) {
+                    pendingAskOrders[index] = pendingAskOrders[lastIndex--];
                     pendingAskOrders.pop();
                 } else {
-                    // delete pendingAskOrders[i];
                     pendingAskOrders.pop();
+                    lastIndex--;
                 }
             }
         }
@@ -366,14 +368,15 @@ contract Sure {
         uint size = pendingBidOrders.length;
         uint lastIndex = size - 1;
 
-        for (uint256 i = 0; i < size; i++) {
-            if (pendingBidOrders[i].hash == item.hash) {
-                if (i < lastIndex) {
-                    pendingBidOrders[i] = pendingBidOrders[lastIndex];
+        for (uint256 _i = size; _i > 0; _i--) {
+            uint256 index = _i - 1;
+            if (pendingBidOrders[index].hash == item.hash) {
+                if (index < lastIndex) {
+                    pendingBidOrders[index] = pendingBidOrders[lastIndex--];
                     pendingBidOrders.pop();
                 } else {
-                    // delete pendingBidOrders[i];
                     pendingBidOrders.pop();
+                    lastIndex--;
                 }
             }
         }
@@ -384,14 +387,15 @@ contract Sure {
         uint size = pendingBidOrders.length;
         uint lastIndex = size - 1;
 
-        for (uint256 i = 0; i < size; i++) {
-            if (pendingBidOrders[i].hash == item.hash) {
-                if (i < lastIndex) {
-                    pendingBidOrders[i] = pendingBidOrders[lastIndex];
+        for (uint256 _i = size; _i > 0; _i--) {
+            uint256 index = _i - 1;
+            if (pendingBidOrders[index].hash == item.hash) {
+                if (index < lastIndex) {
+                    pendingBidOrders[index] = pendingBidOrders[lastIndex--];
                     pendingBidOrders.pop();
                 } else {
-                    // delete pendingBidOrders[i];
                     pendingBidOrders.pop();
+                    lastIndex--;
                 }
             }
         }
@@ -402,14 +406,15 @@ contract Sure {
 
         uint size = items.length;
         uint lastIndex = size - 1;
-        for (uint256 i = 0; i < size; i++) {
-            if (items[i] == item) {
-                if (i < lastIndex) {
-                    items[i] = items[lastIndex];
+        for (uint256 _i = size; _i > 0; _i--) {
+            uint256 index = _i - 1;
+            if (items[index] == item) {
+                if (index < lastIndex) {
+                    items[index] = items[lastIndex--];
                     items.pop();
                 } else {
-                    // delete items[i];
                     items.pop();
+                    lastIndex--;
                 }
             }
         }
@@ -420,14 +425,15 @@ contract Sure {
 
         uint size = items.length;
         uint lastIndex = size - 1;
-        for (uint256 i = 0; i < size; i++) {
-            if (items[i] == item) {
-                if (i < lastIndex) {
-                    items[i] = items[lastIndex];
+        for (uint256 _i = size; _i > 0; _i--) {
+            uint256 index = _i - 1;
+            if (items[index] == item) {
+                if (index < lastIndex) {
+                    items[index] = items[lastIndex--];
                     items.pop();
                 } else {
-                    // delete items[i];
                     items.pop();
+                    lastIndex--;
                 }
             }
         }
