@@ -10,21 +10,21 @@
 
 ### yfii contract
 
-controller: 0x5c5AFd6d344145F66c28611e6cbFf2100E5bc19e
+controller: 0x80a3c5065d720e7E738cDa5b8ADeEEDe86b5c3f1
 
 unihelp:0x569DFeBB36cB9506FEf99F6aFc569FD8b0E4b258
 
-dai:0x1191084797C0d07520374caf345C153b9b2BF1FC
+usdc:0xd76bb6fdd24aA5f85ef614Ab3008190cB279953F
 
-vault:yfii eth/dai lp :0x248CD5f844A013F7Fca9F3E13c81aE8eD23fC973
+vault:yfii eth/usdc lp :0x499164394eDda8CF59dE497BA3788842A2e0A8c1
 
-strategy:0xAa3b53a42A7b92ba22B73976BE74DD6432DA0F45
+strategy:0x4c130dc460fA303F30aB0a280C05c567B14BD9C1
 
 ### uni
 
-eth/dai lp:0x4d7302011f12f49dfd6a33c2ad12a4fbd83fae2d
+eth/usdc lp:0x1238773aa48644747acdba224732e0c2ecac09e7
 
-add liquidity: https://igaojin.me/uniswap-interface/#/add/ETH/0x1191084797C0d07520374caf345C153b9b2BF1FC
+add liquidity: https://igaojin.me/uniswap-interface/#/add/ETH/0xd76bb6fdd24aA5f85ef614Ab3008190cB279953F
 
 
 ### kovan测试网网址
