@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract USDC is ERC20{
 
     constructor () public ERC20("USDC","USDC"){
-        _mint(address(this),10000*1e18);
+        _mint(msg.sender,10000*1e18);
     }
 
     function faucet() public{
