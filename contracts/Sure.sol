@@ -216,7 +216,7 @@ contract Sure {
 
         // int256 snapshotUsdAmount = ask.amount;
         // uint256 currentUsd = strategy.getUnderlying(IERC20(ask.lpAddress), ask.lpAmount) ;
-        uint256 marginAmount = bid.marginAmount;
+        // uint256 marginAmount = bid.marginAmount;
 
         uint256 minLiquidationAmount = ask.amount.mul(PRECISION).mul(liquidationLine + PRECISION).div(PRECISION);
         require(minLiquidationAmount >= bid.marginAmount.mul(PRECISION).add(
@@ -234,27 +234,7 @@ contract Sure {
             inAmount = afterAmount - beforeAmount;
         }
 
-        {
-            uint256 total = inAmount.add(bid.marginAmount);
-            if (total > ask.amount) {
-                // uint256 remaining = total - ask.amount;
-                uint256 profit = total - ask.amount > bid.marginAmount ? total - ask.amount - bid.marginAmount : 0;
-                uint256 bidProfit = profit.mul(ask.apy).div(PRECISION);
-                uint256 askProfit = profit - bidProfit;
-
-                uint256 bidRefund = bid.marginAmount + bidProfit;
-                uint256 reward = bidRefund.mul(liquidationReward).div(PRECISION);
-                bidRefund -= reward;
-
-                usdc.transfer(askOwner, ask.amount.add(askProfit));
-                usdc.transfer(msg.sender, reward);
-                usdc.transfer(bidOwner, bidRefund);
-            } else if (total == ask.amount) {
-                usdc.transfer(askOwner, ask.amount);
-            } else {
-                usdc.transfer(askOwner, total);
-            }
-        }
+        transferOut(ask, bid, askOwner, bidOwner, inAmount);
 
         askSure.burnWithContract(askId);
         bidSure.burnWithContract(bidId);
@@ -314,6 +294,28 @@ contract Sure {
         delete bidToAsk[bidId];
         removeUintInAsks(askOwner, askId);
         removeUintInBids(bidOwner, bidId);
+    }
+
+    function transferOut(AskSure.ASK memory ask, BidSure.BID memory bid, address askOwner, address bidOwner, uint inAmount) private {
+        uint256 total = inAmount.add(bid.marginAmount);
+        if (total > ask.amount) {
+            // uint256 remaining = total - ask.amount;
+            uint256 profit = total - ask.amount > bid.marginAmount ? total - ask.amount - bid.marginAmount : 0;
+            uint256 bidProfit = profit.mul(ask.apy).div(PRECISION);
+            uint256 askProfit = profit - bidProfit;
+
+            uint256 bidRefund = bid.marginAmount + bidProfit;
+            uint256 reward = bidRefund.mul(liquidationReward).div(PRECISION);
+            bidRefund -= reward;
+
+            usdc.transfer(askOwner, ask.amount.add(askProfit));
+            usdc.transfer(msg.sender, reward);
+            usdc.transfer(bidOwner, bidRefund);
+        } else if (total == ask.amount) {
+            usdc.transfer(askOwner, ask.amount);
+        } else {
+            usdc.transfer(askOwner, total);
+        }
     }
 
     /* --- External --- */
