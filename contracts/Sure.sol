@@ -81,9 +81,6 @@ contract Sure {
         // TODO
         _;
     }
-        function add_ask() public {
-            ask(IERC20(address(0xAa49CA3Cec1830dAbF8f2b746002a52E16e18112)), 60, 10, 1000000000000000000, 0xfffffffffffffffffffffffffffffffffffff1ffffffffffffffffffffffffff);
-        }
 
 
     function setStrategy(IERC20 token, IStrategy strategy) public onlyGov {
