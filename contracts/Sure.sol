@@ -63,7 +63,7 @@ contract Sure {
     mapping(address => uint256[]) ownerToAsks;
     mapping(address => uint256[]) ownerToBids;
 
-    IERC20 usdc = IERC20(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    IERC20 usdc = IERC20(0xd76bb6fdd24aA5f85ef614Ab3008190cB279953F);
 
     BidSure public bidSure;
     AskSure public askSure;

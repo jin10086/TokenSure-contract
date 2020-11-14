@@ -37,7 +37,7 @@ interface  ITOKEN{
 contract yfiicover is ITOKEN{
     
     address public constant weth = address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
-    address public constant usdc = address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    address public constant usdc = address(0xd76bb6fdd24aA5f85ef614Ab3008190cB279953F);
 
     using SafeMath for uint256;
 
