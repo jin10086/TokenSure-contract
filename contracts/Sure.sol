@@ -255,7 +255,7 @@ contract Sure {
         require(strategy != IStrategy(address(0)));
         require(askOwner == msg.sender || askOwner == msg.sender);
         uint256 snapshotUsdAmount = ask.amount;
-        uint256 currentUsd = strategy.getUnderlying(IERC20(ask.lpAddress), ask.lpAmount);
+        // uint256 currentUsd = strategy.getUnderlying(IERC20(ask.lpAddress), ask.lpAmount);
         uint256 marginAmount = bid.marginAmount;
 
         uint256 inAmount;
