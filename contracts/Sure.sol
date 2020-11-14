@@ -235,7 +235,7 @@ contract Sure {
         }
 
         {
-        u   int256 total = inAmount.add(bid.marginAmount);
+            uint256 total = inAmount.add(bid.marginAmount);
             if (total > ask.amount) {
                 // uint256 remaining = total - ask.amount;
                 uint256 profit = total - ask.amount > bid.marginAmount ? total - ask.amount - bid.marginAmount : 0;
