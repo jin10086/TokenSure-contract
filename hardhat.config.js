@@ -18,8 +18,11 @@ task("accounts", "Prints the list of accounts", async () => {
  */
 module.exports = {
   solidity: {
-    compilers: [{
+    compilers: [
+      {
         version: "0.6.2"
+      },{
+        version: "0.7.0"
       }
     ]
   }

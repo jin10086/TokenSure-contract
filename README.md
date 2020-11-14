@@ -46,6 +46,7 @@ yfii kovan: https://igaojin.me/dora-kovan-dfi/
 sell{
     apy:
     保证金数量:
+    保证金地址:
     最少期保时间:s数
     开始时间:时间戳
     }
