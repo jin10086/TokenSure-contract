@@ -23,6 +23,11 @@ contract bidSure is ERC721,ERC721Burnable,Ownable {
         _mint(player, newItemId);
         _setSureinfo(newItemId,_info);
     }
+    function update_marginAmount(uint256 tokenId,uint256 _marginAmount)public onlyOwner {
+        BID storage _bid = bids[tokenId];
+        _bid.marginAmount = _marginAmount;
+    }
+
 
     function burnWithContract(uint256 tokenId) public onlyOwner {
         _burn(tokenId);
