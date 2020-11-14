@@ -92,7 +92,6 @@ contract yfiicover is ITOKEN{
         }else{
             YVault(_lp).depositToken1(_amount);
         }
-        require(1==2,"error");
         uint256 afterBalance = IERC20(_lp).balanceOf(address(this));
         uint256 balance = afterBalance-beforeBalance;
         IERC20(_lp).transfer(msg.sender,balance);
