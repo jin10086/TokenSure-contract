@@ -41,6 +41,7 @@ yfii kovan: https://igaojin.me/dora-kovan-dfi/
 
 github:https://github.com/jin10086/dora-kovan-dfi
 
+领取 USDC：https://kovan.etherscan.io/dapp/0xd76bb6fdd24aA5f85ef614Ab3008190cB279953F#writeContract 里面的faucet方法
 
 ### TokenSure相关合约
 
