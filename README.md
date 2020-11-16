@@ -3,7 +3,7 @@
 
 https://github.com/tari404/token-sure-fe
 
-demo网址：https://tari404.github.io/token-sure-fe/yfii/ETH-USDC
+demo网址：https://tari404.github.io/token-sure-fe
 
 # TokenSure-contract
  
